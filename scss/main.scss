@@ -3,6 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  width: 50%;
+  margin: auto;
 
   .card {
     position: relative;
@@ -41,4 +43,3 @@
     transform: rotateY(-180deg);
   }
 }
-
