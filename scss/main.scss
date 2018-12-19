@@ -1,0 +1,44 @@
+.field {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    margin: 5px;
+    width: 30%;
+
+    &:before {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    .card__face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      backface-visibility: hidden;
+    }
+
+    .card__face--front {
+      background: grey;
+    }
+
+    .card__face--back {
+      transform: rotateY(180deg);
+      background: blue;
+    }
+  }
+
+  .card.is-flipped {
+    transform: rotateY(-180deg);
+  }
+}
+

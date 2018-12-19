@@ -1,4 +1,8 @@
 window.onload = () => {
+  this.setEventListener()
+}
+
+function setEventListener() {
   let card = document.getElementsByClassName('card');
 
   for (let i = 0; i < card.length; i++) {
@@ -7,5 +11,3 @@ window.onload = () => {
     })
   };
 }
-
-
