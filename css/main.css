@@ -21,10 +21,13 @@
       left: 0;
       bottom: 0;
       right: 0;
-      backface-visibility: hidden; }
-    #field .card .card__face--front {
-      background: grey; }
+      backface-visibility: hidden;
+      border-radius: 10px; }
     #field .card .card__face--back {
+      background: url(../images/back.jpg) no-repeat center center;
+      background-size: cover;
+      background-size: 200%; }
+    #field .card .card__face--front {
       transform: rotateY(180deg);
       background-size: cover;
       background: center; }
