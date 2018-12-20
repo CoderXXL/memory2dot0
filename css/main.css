@@ -1,34 +1,35 @@
-.field {
+#field {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   width: 50%;
   margin: auto; }
-  .field .card {
+  #field .card {
     position: relative;
     cursor: pointer;
     transition: transform 0.5s;
     transform-style: preserve-3d;
     margin: 5px;
     width: 30%; }
-    .field .card:before {
+    #field .card:before {
       content: "";
       display: block;
       padding-bottom: 100%; }
-    .field .card .card__face {
+    #field .card .card__face {
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-      backface-visibility: hidden; }
-    .field .card .card__face--front {
+      backface-visibility: hidden;
+      color: white; }
+    #field .card .card__face--front {
       background: grey; }
-    .field .card .card__face--back {
+    #field .card .card__face--back {
       transform: rotateY(180deg);
-      background: blue; }
-  .field .card.is-flipped {
+      background-size: cover;
+      background: center; }
+  #field .card.flipped {
     transform: rotateY(-180deg); }
 
 /*# sourceMappingURL=main.css.map */

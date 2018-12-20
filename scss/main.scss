@@ -1,6 +1,5 @@
-.field {
+#field {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   width: 50%;
@@ -27,6 +26,7 @@
       bottom: 0;
       right: 0;
       backface-visibility: hidden;
+      color: white;
     }
 
     .card__face--front {
@@ -35,11 +35,12 @@
 
     .card__face--back {
       transform: rotateY(180deg);
-      background: blue;
+      background-size: cover;
+      background: center;
     }
   }
 
-  .card.is-flipped {
+  .card.flipped {
     transform: rotateY(-180deg);
   }
 }
