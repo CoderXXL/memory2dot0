@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 50%;
+  width: 70%;
   margin: auto; }
   #field .card {
     position: relative;
@@ -10,7 +10,7 @@
     transition: transform 0.5s;
     transform-style: preserve-3d;
     margin: 5px;
-    width: 30%; }
+    width: 20%; }
     #field .card:before {
       content: "";
       display: block;
@@ -21,8 +21,7 @@
       left: 0;
       bottom: 0;
       right: 0;
-      backface-visibility: hidden;
-      color: white; }
+      backface-visibility: hidden; }
     #field .card .card__face--front {
       background: grey; }
     #field .card .card__face--back {
