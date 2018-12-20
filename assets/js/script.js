@@ -6,6 +6,7 @@ window.onload = () => {
 
 }
 
+let difficult = false;
 let card = document.getElementsByClassName('card');
 let cardBack = document.getElementsByClassName('card__face--front');
 let cardImages = shuffle(
@@ -15,6 +16,8 @@ let cardImages = shuffle(
 let classObserver = new MutationObserver (function (event) {
   checkEqual(0, event)
 });
+let main = document.getElementsByClassName('main');
+let field = document.getElementById('field');
 
 
 function renderCards(size) {
@@ -34,7 +37,7 @@ function renderCards(size) {
 
 function setCardImage(i) {
 
-  return cardBack[i].style.backgroundImage = "url(../images/" + cardImages[i] + ".jpg)";
+  return cardBack[i].style.backgroundImage = "url(assets/images/" + cardImages[i] + ".jpg)";
 }
 
 function setEventListener() {
@@ -65,5 +68,32 @@ function checkEqual(i, event) {
   if(event) {
     temp1 = event[0].target.lastElementChild.style.backgroundImage;
     console.log(temp1);
+  }
+}
+
+function setDifficulty(e) {
+  console.log(e)
+  if (e === 'normal') {
+    difficult = true;
+  }
+  if (e === 'hard') {
+    difficult = true;
+  }
+  if (e === 'back') {
+    difficult = false;
+  }
+  
+  if (difficult === true) {
+    main[0].style.opacity = 0;
+    main[0].style.height = 0;
+    field.style.opacity = 1;
+    field.style.height = 'auto';
+
+  } else {
+    main[0].style.opacity = 1;
+    main[0].style.height = 'auto';
+    field.style.opacity = 0;
+    field.style.height = 0;
+
   }
 }
