@@ -8,8 +8,14 @@ window.onload = () => {
 
 let card = document.getElementsByClassName('card');
 let cardBack = document.getElementsByClassName('card__face--front');
-let cardImages = shuffle(['Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8',
-                          'Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8']);
+let cardImages = shuffle(
+  ['Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8',
+  'Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8']
+);
+let classObserver = new MutationObserver (function (event) {
+  checkEqual(0, event)
+});
+
 
 function renderCards(size) {
   console.log(cardImages)
@@ -22,6 +28,7 @@ function renderCards(size) {
     `;
     field.appendChild(newCard);
     this.setCardImage(i);
+    this.checkEqual(i);
   }
 };
 
@@ -49,4 +56,14 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function checkEqual(i, event) {
+  classObserver.observe(card[i], {
+    attributeFilter: ['class']
+  });
+  if(event) {
+    temp1 = event[0].target.lastElementChild.style.backgroundImage;
+    console.log(temp1);
+  }
 }
