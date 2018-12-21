@@ -1,9 +1,7 @@
 window.onload = () => {
 
   this.renderCards(cardImages.length)
-
   this.setEventListener()
-
 }
 
 let difficult = false;
@@ -14,12 +12,15 @@ let cardImages = shuffle(
   'Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8']
 );
 let classObserver = new MutationObserver (function (event) {
-  checkEqual(0, event)
+  getEvent(0, event);
+  checkEqual();
 });
 let main = document.getElementsByClassName('main');
 let field = document.getElementById('field');
 let counter = 0;
 let tempEvent;
+let classObserverEvent;
+let points = 0;
 
 
 function renderCards(size) {
@@ -33,7 +34,7 @@ function renderCards(size) {
     `;
     field.appendChild(newCard);
     this.setCardImage(i);
-    this.checkEqual(i);
+    this.getEvent(i);
   }
 };
 
@@ -64,30 +65,42 @@ function shuffle(array) {
   return array;
 }
 
-function checkEqual(i, event) {
+
+function getEvent(i, event) {
   classObserver.observe(card[i], {
     attributeFilter: ['class']
   });
 
+  classObserverEvent = event;
 
   if(counter === 1) {
     tempEvent = event[0].target.lastElementChild.style.backgroundImage;
-    console.log(tempEvent);
   }
+}
+
+
+function checkEqual() {
   if(counter >= 2) {
     counter = 0;
-
-    if(event) {
-      if(tempEvent === event[0].target.lastElementChild.style.backgroundImage) {
-        // if cards equal
-
-      } else {
-        //if cards !equal
-
+    if(classObserverEvent) {
+      for(let i = 0; i < card.length; i++) {
+        if (tempEvent === classObserverEvent[0].target.lastElementChild.style.backgroundImage) {
+          card[i].classList.remove('flipped');
+          card[i].classList.add('locked');
+          setPoints();
+        } else {
+            setTimeout(e => {
+              card[i].classList.remove('flipped');
+            }, 1000)
+        }
       }
     }
   }
+}
 
+function setPoints() {
+  points ++;
+  console.log(points);
 }
 
 function setDifficulty(e) {

@@ -182,7 +182,8 @@ p {
     }
   }
 
-  .card.flipped {
+  .card.flipped, .locked {
     transform: rotateY(-180deg);
+    pointer-events: none;
   }
 }

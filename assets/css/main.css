@@ -194,8 +194,9 @@ p {
   background-position: center;
 }
 
-#field .card.flipped {
+#field .card.flipped, #field .locked {
   -webkit-transform: rotateY(-180deg);
           transform: rotateY(-180deg);
+  pointer-events: none;
 }
 /*# sourceMappingURL=main.css.map */
