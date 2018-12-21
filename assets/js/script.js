@@ -18,6 +18,8 @@ let classObserver = new MutationObserver (function (event) {
 });
 let main = document.getElementsByClassName('main');
 let field = document.getElementById('field');
+let counter = 0;
+let tempEvent;
 
 
 function renderCards(size) {
@@ -44,6 +46,7 @@ function setEventListener() {
   for (let i = 0; i < card.length; i++) {
     card[i].addEventListener('click', function() {
       card[i].classList.toggle('flipped');
+      counter ++;
     })
   };
 }
@@ -65,10 +68,26 @@ function checkEqual(i, event) {
   classObserver.observe(card[i], {
     attributeFilter: ['class']
   });
-  if(event) {
-    temp1 = event[0].target.lastElementChild.style.backgroundImage;
-    console.log(temp1);
+
+
+  if(counter === 1) {
+    tempEvent = event[0].target.lastElementChild.style.backgroundImage;
+    console.log(tempEvent);
   }
+  if(counter >= 2) {
+    counter = 0;
+
+    if(event) {
+      if(tempEvent === event[0].target.lastElementChild.style.backgroundImage) {
+        // if cards equal
+
+      } else {
+        //if cards !equal
+
+      }
+    }
+  }
+
 }
 
 function setDifficulty(e) {
@@ -82,7 +101,7 @@ function setDifficulty(e) {
   if (e === 'back') {
     difficult = false;
   }
-  
+
   if (difficult === true) {
     main[0].style.opacity = 0;
     main[0].style.height = 0;
