@@ -4,22 +4,24 @@ window.onload = () => {
   this.setEventListener()
 }
 
-let difficult = false;
 let card = document.getElementsByClassName('card');
 let cardBack = document.getElementsByClassName('card__face--front');
 let cardImages = shuffle(
   ['Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8',
   'Bild1', 'Bild2', 'Bild3', 'Bild4', 'Bild5', 'Bild6', 'Bild7', 'Bild8']
-);
+  );
+
 let classObserver = new MutationObserver (function (event) {
   getEvent(0, event);
   checkEqual();
 });
+let classObserverEvent;
+let tempEvent;
+
 let main = document.getElementsByClassName('main');
 let field = document.getElementById('field');
+let difficult = false;
 let counter = 0;
-let tempEvent;
-let classObserverEvent;
 let points = 0;
 
 
@@ -85,9 +87,7 @@ function checkEqual() {
     if(classObserverEvent) {
       for(let i = 0; i < card.length; i++) {
         if (tempEvent === classObserverEvent[0].target.lastElementChild.style.backgroundImage) {
-          card[i].classList.remove('flipped');
-          card[i].classList.add('locked');
-          setPoints();
+          console.log(true)
         } else {
             setTimeout(e => {
               card[i].classList.remove('flipped');
@@ -103,8 +103,9 @@ function setPoints() {
   console.log(points);
 }
 
+
+// just for the moment
 function setDifficulty(e) {
-  console.log(e)
   if (e === 'normal') {
     difficult = true;
   }
