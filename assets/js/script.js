@@ -106,14 +106,18 @@ function setPoints() {
 
 // just for the moment
 function setDifficulty(e) {
-  if (e === 'normal') {
-    difficult = true;
-  }
-  if (e === 'hard') {
-    difficult = true;
-  }
-  if (e === 'back') {
-    difficult = false;
+  switch(e) {
+    case 'normal':
+      difficult = true;
+      break;
+    case 'hard':
+      difficult = true;
+      break;
+    case 'back':
+      difficult = false;
+      break;
+    default:
+      difficult = false;
   }
 
   if (difficult === true) {
